@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>How to draw an owl.</title>
+    <meta charset="utf-8">
+<!--
+
+H2: Lato, 36px, bold
+H3: Lato, 24px, bold
+H4: Lato, 22px, bold
+H5: Lato, 20px, bold
+H6: Lato, 19px, plain text
+Body: Noto sans, 20px, plain text 
+$wbGray: #e1e4e7;
+$button-blue: #284162;
+$wbGrayLight: #eaebed;
+$accent-blue: #335075;
+$border-red: #af3c43;
+$active-blue: #243850;
+$search-gray: #e0e0e0;
+$profile-gray: #eaebed;
+
+-->
+    <style>
+      @import 'https://fonts.googleapis.com/css?family=Lato|Noto+Sans&display=swap';
+
+      body { font-family: 'Noto Sans', sans-serif; font-size: 20px; }
+      h1 {  font-family: 'Lato', sans-serif; border-bottom: 1px solid #af3c43; font-size: 38px; font-weight:bold }
+      h2 { font-family: 'Lato', sans-serif; font-size: 36px; font-weight: bold }
+      h3 { font-family: 'Lato', sans-serif; font-size: 24px; font-weight: bold }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .whoah { color: #d3080c }
+      .okay { color: #278400 }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: middle
+
+# How to Draw an Owl 
+
+## A Pragmatic Approach to Continuous Integration and Continuous Delivery
+
+---
+
+## Hi, I'm .okay[Calvin Rodo].
+
+--
+
+## I'm a .okay[Senior Advisor] in Application Development at Employement and Social Development Canada.
+
+--
+
+## I'm also the .okay[Digital Fellow] for .okay[DevOps] with the Digital Academy.
+
+---
+
+# How to Draw an Owl
+
+.center[![A drawing of two circles one small on top, one larger at the bottom, the circles slightly overlap, and beside it a detailed image of an owl.](./2steps.png)]
+.left[**Step 1.** Draw two circles] .right[**Step 2.** Draw the rest of the f\*\*\*\*\*\* owl]
+
+???
+
+How many people have seen this meme. 
+
+When I talk to people about build CI/CD Pipelines I feel like this is how it comes across.
+
+I'm here to argue for a pragmatic approach using open source tools that we can start using today that will allow us to quickly move to the cloud.
+
+I can't take credit saw this idea in a presentation from DevOpsDays Toronto
+
+---
+
+class: middle, center
+
+## What is .okay[Continuous Integration]?
+
+![An image outlining a CI flow in git, a new branch is created, a merge request is created, tests fail, new changes are pushed, those tests pass, the code is reviewed, and merged into the master branch.](./CI-diag1.png)
+
+???
+
+Continuous Integration (CI) is the practice of merging all developers' working copies to a shared mainline several times a day.
+
+These changes typically go through a suite of automated quality checks before being manually reviewed by a peer. 
+
+---
+
+class: middle
+
+## What is .okay[Continuous Delivery]?
+
+???
+
+Continuous Delivery is a software engineering approach in which teams produce software in short cycles, ensuring that the software can be reliably released at any time and, when releasing the software, doing so manually.
+
+It's the same thing as Continous Deployment, in both we have a deployable product at the end.
+
+Whether you trust the process enough to remove the human element from deploying or not is really irrelevant to the work that needs to be done.
+
+---
+
+# How to do CI/CD in two easy steps
+
+???
+
+So in the spirit of drawing an owl I present to you my guide to to CI/CD in two easy steps
+
+--
+
+## 1. Check in some code.
+
+## 2. Do all of your current manual processes automatically.
+
+???
+
+Check some code into source control
+
+Just do everything you currently do but automate it.
+
+Okay so it's not two easy steps but it's not really much more then that.
+
+---
+
+class: middle 
+
+# CI/CD in 3 easy steps.okay[<sup>*</sup>]
+
+--
+
+## .okay[<sup>*</sup>] Repeat Step 3 a .okay[bunch] of times
+
+---
+
+class: middle
+
+## Step 1: Use .okay[Git].
+
+???
+
+This one is a no brainer and there shouldn't really be any discussion needed.
+
+Everyone else is using it. 
+
+All of the good tools are being built to integrate with it. 
+
+It's easier to learn to use than it will be to get some things working without it
+
+---
+
+class: middle
+
+## Step 2: Pick a .okay[CI/CD] Tool.
+
+???
+
+Pick a tool to automate your builds and creation of your deliverables.
+
+---
+
+class: middle, center
+
+## Which .okay[Tool]? 
+
+---
+
+class: middle, center
+
+## Just .okay[pick] one.
+
+???
+
+Pick the easiest one or the one you are comfortable with. 
+
+Essentially they all do the same thing just run commands on a computer somewhere.
+
+Have Azure use Azure DevOps Pipelines, Have GCP use Google Cloud Build, Have Aws use Code Pipeline or Code Build, have GitLab use GitLab CI/CD, like Jenkins use that, like Drone.io use that. 
+
+Pick the one that sucks least for your current situation.
+
+---
+
+class: middle
+
+## But what if we .whoah[can't] decide which is best?
+
+---
+
+class: middle
+
+## Should we setup a .okay[Working Group]? 
+
+---
+
+class: middle, center
+
+## .whoah[**No**]
+
+???
+
+Flip a coin, or just try one out and if it sucks don't use it switch to another.
+
+A working group is not going to get you the answer 
+
+---
+
+class: middle
+
+## Step 3: Automate a .okay[Thing]
+
+???
+
+Start building those feedback loops
+
+---
+
+class: middle, center
+
+## Which .okay[Thing]?
+
+---
+
+class: middle, center
+
+## The .okay[Easiest] Thing.
+
+???
+
+Have automated unit tests uses those.
+
+Have automated end to end tests use those. 
+
+Greenfield project? Use linters. 
+
+Have nothing well write one test or pick one linter and use that.
+
+
+---
+
+class: middle
+
+# Here's some ideas
+
+---
+
+class: middle
+
+
+## Pick .okay[one] of the following: 
+
+--
+
+### Secret Checking
+
+--
+
+### Linting
+
+--
+
+### Test Automation
+
+--
+
+### Vulnerability Scanning
+
+--
+
+### Static Application Security Testing (SAST)
+
+--
+
+### Dynamic Application Security Testing (DAST)
+
+---
+
+class: middle
+
+## Pick the .okay[easiest] to setup
+
+???
+
+You already have linting rules add a linter
+
+Already have Test automation add that 
+
+---
+
+class: middle
+
+### Also typically they are all .okay[easy] to setup: 
+
+```
+docker pull owasp/glue
+docker run --rm --name=Glue \
+  -v /code/location:/tmp/directory owasp/glue \
+  -d -f json /tmp/directory/
+
+```
+
+---
+
+class: middle
+
+## .okay[Congrats] you are on your way to DevOps.
+
+## You've got a .okay[feedback loop].
+
+---
+
+class: middle
+
+## So .okay[how] do you Draw an Owl?
+
+---
+# .okay[One] step at a time.
+
+ ![Steps to draw an Owl](./fullowl.png)
+
+???
+
+So I ask that instead of setting up a working group, or writing a strategy on how to do this that you task a group in your department with automating a build. 
+
+Get them using git, give them access to a CI/CD Tool, barely any money, and ask them to automate a single thing as part of their automated build.
+
+---
+
+## .whoah[But Wait!]
+
+--
+
+## What tools should we use?
+
+---
+
+## Here's a hint: 
+
+--
+
+## Google .okay[Awesome x<sup>*</sup>]
+
+### <sup>*</sup> Where x equals the thing you want to do.
+
+--
+
+- Awesome Static Analysis: https://github.com/mre/awesome-static-analysis
+- Awesome Linters: https://github.com/caramelomartins/awesome-linters
+- Awesome Test Automation: https://github.com/atinfo/awesome-test-automation
+- Awesome Security: https://github.com/sbilly/awesome-security
+- Awesome CI: https://github.com/ligurio/awesome-ci
+- Awesome you get the picture...
+
+---
+
+## Okay now I've automated my things what next: 
+
+--
+
+## Automate .okay[More] Things!
+
+--
+
+- Bundle Sizes
+- Time to Interaction
+- Image Compression
+- Spell Checking
+- Translations
+
+---
+
+class: middle, center
+
+## GCDevOpsLeague
+
+### .okay[gcdevopsleague.slack.com]
+
+???
+
+Appeal to join the GCDevOpsLeauge
+
+---
+
+class: middle
+
+## Failure Party!
+
+![Invitation to a failure part on July 17th 2019 at Maclaren's in Ottawa](./fail.jpg)
+
+https://www.eventbrite.com/e/gcdevopsleague-failure-party-tickets-63663337757
+
+???
+
+Come join the GCDevOpsLeague if you are in town and talk about how you messed up 
+
+Share your own failure - about how you got into build automation
+
+---
+
+class: middle, center
+
+## Questions?
+
+
+    </textarea>
+    <script src="./remark-latest.min.js" type="text/javascript">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
