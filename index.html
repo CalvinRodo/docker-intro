@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>How to draw an owl.</title>
+    <title>Intro to Docker</title>
     <meta charset="utf-8">
 <!--
 
@@ -38,9 +38,7 @@ $profile-gray: #eaebed;
 
 class: middle
 
-# How to Draw an Owl 
-
-## A Pragmatic Approach to Continuous Integration and Continuous Delivery
+# Intro to Docker
 
 ---
 
@@ -56,344 +54,150 @@ class: middle
 
 ---
 
-# How to Draw an Owl
-
-.center[![A drawing of two circles one small on top, one larger at the bottom, the circles slightly overlap, and beside it a detailed image of an owl.](./2steps.png)]
-.left[**Step 1.** Draw two circles] .right[**Step 2.** Draw the rest of the f\*\*\*\*\*\* owl]
-
-???
-
-How many people have seen this meme. 
-
-When I talk to people about build CI/CD Pipelines I feel like this is how it comes across.
-
-I'm here to argue for a pragmatic approach using open source tools that we can start using today that will allow us to quickly move to the cloud.
-
-I can't take credit saw this idea in a presentation from DevOpsDays Toronto
-
----
-
-class: middle, center
-
-## What is .okay[Continuous Integration]?
-
-![An image outlining a CI flow in git, a new branch is created, a merge request is created, tests fail, new changes are pushed, those tests pass, the code is reviewed, and merged into the master branch.](./CI-diag1.png)
-
-???
-
-Continuous Integration (CI) is the practice of merging all developers' working copies to a shared mainline several times a day.
-
-These changes typically go through a suite of automated quality checks before being manually reviewed by a peer. 
-
----
-
-class: middle
-
-## What is .okay[Continuous Delivery]?
-
-???
-
-Continuous Delivery is a software engineering approach in which teams produce software in short cycles, ensuring that the software can be reliably released at any time and, when releasing the software, doing so manually.
-
-It's the same thing as Continous Deployment, in both we have a deployable product at the end.
-
-Whether you trust the process enough to remove the human element from deploying or not is really irrelevant to the work that needs to be done.
-
----
-
-# How to do CI/CD in two easy steps
-
-???
-
-So in the spirit of drawing an owl I present to you my guide to to CI/CD in two easy steps
+## .okay[What] is Docker
 
 --
 
-## 1. Check in some code.
+### Docker is a combination of a .okay[Container], a .okay[Container Registry], and a .okay[Daemon] that runs containers on an OS.
 
-## 2. Do all of your current manual processes automatically.
+
+---
+
+## What is a .okay[Container]?
+
+--
+
+### A container is a way to create .okay[immutable] infrastructure it packages up the configuration, files, and state of an application into an .okay[image] that can be moved around.
+
+--
+
+### .whoah[Important Note:] You can think of it like a VM but it's important to note that it is not a VM. 
+
+
+--
+
+## Docker containers are called .okay[images] they are .okay[built] from .okay[Dockerfiles]
 
 ???
 
-Check some code into source control
+Containers share the underlying operating system and while under normal use a the processes in a container are isolated from other containers on a system but if someone was to break out of a container they would be able to access other processes on that OS.
 
-Just do everything you currently do but automate it.
-
-Okay so it's not two easy steps but it's not really much more then that.
+I'll explain these terms later
 
 ---
 
-class: middle 
-
-# CI/CD in 3 easy steps.okay[<sup>*</sup>]
+## What is a .okay[Container Registry]?
 
 --
 
-## .okay[<sup>*</sup>] Repeat Step 3 a .okay[bunch] of times
+### A place where you can get .okay[images] that other people have created and where you can store your own.
+
+--
+
+### https://hub.docker.com is Docker's "official" registry
 
 ---
 
-class: middle
+## What is a .okay[Daemon]?
 
-## Step 1: Use .okay[Git].
+--
+
+### A .okay[Daemon] is just a process that runs in the background on a machine all the time and has no gui.
+
+### For those from the windows side of things it's identical to a windows service 
+
+
+---
+
+class: center, middle
+
+## .okay[Why] would you use Docker?
+
+---
+
+## .okay[Reusability]
+
+--
+
+### .okay[Dockerfile] are just text
+
+--
+
+### .okay[Images] consist of .okay[layers]
+
+--
+
+### Dockerfiles can .okay[extend] other Images
 
 ???
 
-This one is a no brainer and there shouldn't really be any discussion needed.
+So that means they can be stored in source control and treated the same way as code.
+You can automate the creation of images from dockerfiles, you can automate quality checks, you can collaborate using modern ALM tools like git, github, gitlab etc..
 
-Everyone else is using it. 
-
-All of the good tools are being built to integrate with it. 
-
-It's easier to learn to use than it will be to get some things working without it
+Because images have the concept of layers and the Dockerfile that defines an image allows you to extend other images, you can create common container definitions that can be extended by other people in your organization.
+Or you can take advantage of images built by existing organizations that already have fully configured software. 
 
 ---
 
-class: middle
+## .okay[Immutability]
 
-## Step 2: Pick a .okay[CI/CD] Tool.
+--
+
+### No more "Works on my machine!"
+
+--
+
+### No more patching only replacing!
+
+---
+
+## .okay[Introspection]
+
+### The ability to apply metadata to images and to compare two images allows novels ways to interact with your servers
+
+---
+
+## .okay[Repeatability]
+
+### Infrastructure as Code
 
 ???
 
-Pick a tool to automate your builds and creation of your deliverables.
+As mentioned earlier because dockerfiles are just text and they are the steps in createing an image you can reliably recreate your image over and over again. 
 
 ---
 
-class: middle, center
+## .okay[Simplicity]
 
-## Which .okay[Tool]? 
+### Processes think they are alone in a container
 
----
-
-class: middle, center
-
-## Just .okay[pick] one.
-
-???
-
-Pick the easiest one or the one you are comfortable with. 
-
-Essentially they all do the same thing just run commands on a computer somewhere.
-
-Have Azure use Azure DevOps Pipelines, Have GCP use Google Cloud Build, Have Aws use Code Pipeline or Code Build, have GitLab use GitLab CI/CD, like Jenkins use that, like Drone.io use that. 
-
-Pick the one that sucks least for your current situation.
+### Smaller attack surface
 
 ---
 
-class: middle
+# Important things to remember!
 
-## But what if we .whoah[can't] decide which is best?
+## Containers don't contain!
 
----
+## Security of the underlying OS is still important
 
-class: middle
-
-## Should we setup a .okay[Working Group]? 
+## Security is still .whoah[important]!
 
 ---
 
-class: middle, center
-
-## .whoah[**No**]
-
-???
-
-Flip a coin, or just try one out and if it sucks don't use it switch to another.
-
-A working group is not going to get you the answer 
+## What's next
 
 ---
 
-class: middle
+## Container orchestration
 
-## Step 3: Automate a .okay[Thing]
-
-???
-
-Start building those feedback loops
+### Using tools like Kuberenetes you can run your programmatically connect containers together and scale horizontally as needed. 
 
 ---
 
-class: middle, center
+## Cloud tools
 
-## Which .okay[Thing]?
-
----
-
-class: middle, center
-
-## The .okay[Easiest] Thing.
-
-???
-
-Have automated unit tests uses those.
-
-Have automated end to end tests use those. 
-
-Greenfield project? Use linters. 
-
-Have nothing well write one test or pick one linter and use that.
-
-
----
-
-class: middle
-
-# Here's some ideas
-
----
-
-class: middle
-
-
-## Pick .okay[one] of the following: 
-
---
-
-### Secret Checking
-
---
-
-### Linting
-
---
-
-### Test Automation
-
---
-
-### Vulnerability Scanning
-
---
-
-### Static Application Security Testing (SAST)
-
---
-
-### Dynamic Application Security Testing (DAST)
-
----
-
-class: middle
-
-## Pick the .okay[easiest] to setup
-
-???
-
-You already have linting rules add a linter
-
-Already have Test automation add that 
-
----
-
-class: middle
-
-### Also typically they are all .okay[easy] to setup: 
-
-```
-docker pull owasp/glue
-docker run --rm --name=Glue \
-  -v /code/location:/tmp/directory owasp/glue \
-  -d -f json /tmp/directory/
-
-```
-
----
-
-class: middle
-
-## .okay[Congrats] you are on your way to DevOps.
-
-## You've got a .okay[feedback loop].
-
----
-
-class: middle
-
-## So .okay[how] do you Draw an Owl?
-
----
-# .okay[One] step at a time.
-
- ![Steps to draw an Owl](./fullowl.png)
-
-???
-
-So I ask that instead of setting up a working group, or writing a strategy on how to do this that you task a group in your department with automating a build. 
-
-Get them using git, give them access to a CI/CD Tool, barely any money, and ask them to automate a single thing as part of their automated build.
-
----
-
-## .whoah[But Wait!]
-
---
-
-## What tools should we use?
-
----
-
-## Here's a hint: 
-
---
-
-## Google .okay[Awesome x<sup>*</sup>]
-
-### <sup>*</sup> Where x equals the thing you want to do.
-
---
-
-- Awesome Static Analysis: https://github.com/mre/awesome-static-analysis
-- Awesome Linters: https://github.com/caramelomartins/awesome-linters
-- Awesome Test Automation: https://github.com/atinfo/awesome-test-automation
-- Awesome Security: https://github.com/sbilly/awesome-security
-- Awesome CI: https://github.com/ligurio/awesome-ci
-- Awesome you get the picture...
-
----
-
-## Okay now I've automated my things what next: 
-
---
-
-## Automate .okay[More] Things!
-
---
-
-- Bundle Sizes
-- Time to Interaction
-- Image Compression
-- Spell Checking
-- Translations
-
----
-
-class: middle, center
-
-## GCDevOpsLeague
-
-### .okay[gcdevopsleague.slack.com]
-
-???
-
-Appeal to join the GCDevOpsLeauge
-
----
-
-class: middle
-
-## Failure Party!
-
-![Invitation to a failure part on July 17th 2019 at Maclaren's in Ottawa](./fail.jpg)
-
-https://www.eventbrite.com/e/gcdevopsleague-failure-party-tickets-63663337757
-
-???
-
-Come join the GCDevOpsLeague if you are in town and talk about how you messed up 
-
-Share your own failure - about how you got into build automation
+###  The cloud is where containers really start to .okay[shine]
 
 ---
 
