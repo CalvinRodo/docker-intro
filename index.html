@@ -149,15 +149,34 @@ Or you can take advantage of images built by existing organizations that already
 
 ### No more patching only replacing!
 
+???
+
+With containers you can be confident that the container that runs on your machine is identical to the one running on the server. 
+No more patch windows, or wondering what version of software you are running, just rebuild a container and replace the old one. 
+
 ---
 
 ## .okay[Introspection]
 
-### The ability to apply metadata to images and to compare two images allows novels ways to interact with your servers
+--
+
+### You can apply .okay[Metadata] to containers
+### https://github.com/opencontainers/image-spec/blob/master/annotations.md
+
+--
+
+### You can use .okay[docker diff] to compare two images
+
+???
+
+The ability to apply metadata to images and to compare two images allows novels ways to interact with your servers
+Use labels to figure out who built things where they were built, whatever you want. 
 
 ---
 
 ## .okay[Repeatability]
+
+--
 
 ### Infrastructure as Code
 
@@ -169,23 +188,43 @@ As mentioned earlier because dockerfiles are just text and they are the steps in
 
 ## .okay[Simplicity]
 
+--
+
 ### Processes think they are alone in a container
 
+--
+
 ### Smaller attack surface
+
+???
+
+Everything can host http on port 80
+
+You can mess around with the OS without worrying about breaking other peoples stuff 
+
+Always have the version of files you want without overriding others stuff.
+
+Less stuff to hack inside the container
 
 ---
 
 # Important things to remember!
 
+--
+
 ## Containers don't contain!
 
+--
+
 ## Security of the underlying OS is still important
+
+--
 
 ## Security is still .whoah[important]!
 
 ---
 
-## What's next
+## What's you should dive into next.
 
 ---
 
@@ -193,11 +232,27 @@ As mentioned earlier because dockerfiles are just text and they are the steps in
 
 ### Using tools like Kuberenetes you can run your programmatically connect containers together and scale horizontally as needed. 
 
+???
+
+High-level overview of kubernetes
+
 ---
 
 ## Cloud tools
 
 ###  The cloud is where containers really start to .okay[shine]
+
+??? 
+
+explain some of the stuff in the cloud here
+
+---
+
+class: middle, center
+
+## Activity time!
+
+## https://katacoda.com/sylus/courses/container-basics
 
 ---
 
