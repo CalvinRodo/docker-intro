@@ -80,7 +80,7 @@ class: middle
 
 ???
 
-Containers share the underlying operating system and while under normal use a the processes in a container are isolated from other containers on a system but if someone was to break out of a container they would be able to access other processes on that OS.
+Containers share the underlying operating system and while under normal use the processes in a container are isolated from other containers on a system but if someone was to break out of a container they would be able to access other processes on that OS.
 
 I'll explain these terms later
 
@@ -180,6 +180,15 @@ Use labels to figure out who built things where they were built, whatever you wa
 
 ### Infrastructure as Code
 
+```dockerfile
+FROM node:lts-alpine
+ENV NODE_ENV=production
+WORKDIR app/
+COPY package.json package-lock.json ./
+RUN npm ci
+COPY * */
+
+```
 ???
 
 As mentioned earlier because dockerfiles are just text and they are the steps in createing an image you can reliably recreate your image over and over again. 
@@ -230,7 +239,7 @@ Less stuff to hack inside the container
 
 ## Container orchestration
 
-### Using tools like Kuberenetes you can run your programmatically connect containers together and scale horizontally as needed. 
+### Tools such as .okay[Kubernetes] or .okay[K8S] allows you to manage, scale and deploy a multiple container eco-system.
 
 ???
 
@@ -245,6 +254,18 @@ High-level overview of kubernetes
 ???
 
 explain some of the stuff in the cloud here
+
+---
+
+## Standardized Dev Environments
+
+### Visual Studio Code Remote - Containers
+
+#### https://code.visualstudio.com/docs/remote/containers
+
+???
+
+Show a quick demo of setting up Visual Studio Code Remote
 
 ---
 
